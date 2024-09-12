@@ -9,4 +9,7 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+
+    public DbSet<GO2PET.Models.Mascota> DataMascota { get; set; }
+    
 }
