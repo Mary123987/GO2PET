@@ -4,35 +4,78 @@
     ViewData["Title"] = "Lista de Mascotas";
 }
 
-<h1>Lista de Mascotas</h1>
+<style>
+    body {
+        background-image: url('https://example.com/path-to-your-pet-themed-background.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: 'Arial', sans-serif;
+    }
+    .container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+    h1 {
+        color: #ff6f61;
+    }
+    .table {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .table th {
+        background-color: #ff6f61;
+        color: #fff;
+    }
+    .table td {
+        background-color: #ffe6e1;
+    }
+    .btn-primary {
+        background-color: #ff6f61;
+        border-color: #ff6f61;
+    }
+    .btn-primary:hover {
+        background-color: #ff3b2f;
+        border-color: #ff3b2f;
+    }
+</style>
 
-@if (TempData["Message"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["Message"]
-    </div>
-}
+<div class="container">
+    <h1 class="text-center">Lista de Mascotas</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Raza</th>
-            <th>Color</th>
-            <th>Fecha de Nacimiento</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var mascota in Model)
-        {
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["Message"]
+        </div>
+    }
+
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@mascota.Nombre</td>
-                <td>@mascota.Raza</td>
-                <td>@mascota.Color</td>
-                <td>@mascota.FechaNacimiento.ToString("yyyy-MM-dd")</td>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Color</th>
+                <th>Fecha de Nacimiento</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var mascota in Model)
+            {
+                <tr>
+                    <td>@mascota.Nombre</td>
+                    <td>@mascota.Raza</td>
+                    <td>@mascota.Color</td>
+                    <td>@mascota.FechaNacimiento.ToString("dd 'de' MMMM 'de' yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<a class="btn btn-primary" asp-action="RegistroMascota">Agregar Nueva Mascota</a>
+    <div class="text-center mt-3">
+        <a class="btn btn-primary" asp-action="RegistroMascota">Agregar Nueva Mascota</a>
+    </div>
+</div>
