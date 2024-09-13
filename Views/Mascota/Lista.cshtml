@@ -1,0 +1,38 @@
+@model IEnumerable<GO2PET.Models.Mascota>
+
+@{
+    ViewData["Title"] = "Lista de Mascotas";
+}
+
+<h1>Lista de Mascotas</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Raza</th>
+            <th>Color</th>
+            <th>Fecha de Nacimiento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mascota in Model)
+        {
+            <tr>
+                <td>@mascota.Nombre</td>
+                <td>@mascota.Raza</td>
+                <td>@mascota.Color</td>
+                <td>@mascota.FechaNacimiento.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-action="RegistroMascota">Agregar Nueva Mascota</a>
